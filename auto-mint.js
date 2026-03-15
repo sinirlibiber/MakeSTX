@@ -28,7 +28,7 @@ const fs     = require("fs");
 
 // ─── CONFIG ────────────────────────────────────────────────
 const CONFIG = {
-  contractAddress: "SP38Q50GFD6PDP895EDB1Z4B64NCG9763QFS663G7", // deploy ettikten sonra güncelle
+  contractAddress: "SP38Q50GFD6PDP895EDB1Z4B64NCG9763QFS663G7",
   contractName:    "makestx-nft",
   functionName:    "mint",
 
