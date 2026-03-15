@@ -1,0 +1,18 @@
+---
+id: 0
+name: Mainnet deployment
+network: mainnet
+stacks-node: "https://stacks-node-api.mainnet.stacks.co"
+bitcoin-node: "http://blockstack:blockstacksystem@bitcoin.blockstack.com:8332"
+plan:
+  batches:
+    - id: 0
+      transactions:
+        - contract-publish:
+            contract-name: makestx-nft
+            expected-sender: SPVGPM72TTA4C6NEGEJG507PNKT34869Q7447VS6
+            cost: 54990
+            path: contracts/makestx-nft.clar
+            anchor-block-only: true
+            clarity-version: 2
+      epoch: "2.4"
