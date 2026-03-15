@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg:       #030308;
+  --surface:  #080812;
+  --surface2: #0d0d1f;
+  --border:   #1a1a3a;
+  --accent:   #00f5ff;   /* cyan neon */
+  --accent2:  #ff0080;   /* magenta neon */
+  --accent3:  #7b00ff;   /* purple */
+  --neon:     #00f5ff;
+  --text:     #e0e8ff;
+  --muted:    #4a5080;
+  --warning:  #ffaa00;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ───────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 2px;
+  box-shadow: 0 0 6px var(--accent);
+}
+
+/* ── Scan-line overlay ───────────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 245, 255, 0.012) 2px,
+    rgba(0, 245, 255, 0.012) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── Grid bg ─────────────────────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(0, 245, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 245, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(255, 0, 128, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 128, 0.02) 1px, transparent 1px);
+  background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
+}
+
+/* ── Typography ──────────────────────────────────────── */
+.font-display { font-family: 'Orbitron', monospace; }
+.font-mono    { font-family: 'Share Tech Mono', monospace; }
+
+/* ── Gradient text ───────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(90deg, #00f5ff 0%, #ff0080 50%, #7b00ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-cyan {
+  background: linear-gradient(90deg, #00f5ff, #00aaff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Glow ────────────────────────────────────────────── */
+.glow-cyan    { box-shadow: 0 0 15px rgba(0,245,255,0.4), 0 0 40px rgba(0,245,255,0.1); }
+.glow-magenta { box-shadow: 0 0 15px rgba(255,0,128,0.4), 0 0 40px rgba(255,0,128,0.1); }
+.glow-purple  { box-shadow: 0 0 15px rgba(123,0,255,0.4), 0 0 40px rgba(123,0,255,0.1); }
+
+.text-glow-cyan    { text-shadow: 0 0 10px rgba(0,245,255,0.8), 0 0 30px rgba(0,245,255,0.4); }
+.text-glow-magenta { text-shadow: 0 0 10px rgba(255,0,128,0.8), 0 0 30px rgba(255,0,128,0.4); }
+
+/* ── Buttons ─────────────────────────────────────────── */
+.btn-primary {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: 'Orbitron', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.btn-primary:hover {
+  color: #000;
+  box-shadow: 0 0 20px rgba(0,245,255,0.6), 0 0 60px rgba(0,245,255,0.2);
+}
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary > * { position: relative; z-index: 1; }
+.btn-primary span { position: relative; z-index: 1; }
+
+.btn-magenta {
+  background: transparent;
+  border: 1px solid var(--accent2);
+  color: var(--accent2);
+  font-family: 'Orbitron', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.btn-magenta:hover {
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255,0,128,0.6);
+  background: rgba(255,0,128,0.15);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  transition: all 0.2s;
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(0,245,255,0.05);
+}
+
+/* ── Cards ───────────────────────────────────────────── */
+.card-cyber {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  position: relative;
+}
+.card-cyber::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 40px; height: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+.card-cyber::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 40px; height: 2px;
+  background: var(--accent2);
+  box-shadow: 0 0 8px var(--accent2);
+}
+
+.card-dark {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+/* ── NFT Card ────────────────────────────────────────── */
+.nft-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.nft-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px rgba(0,245,255,0.2), 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* ── Hex badge ───────────────────────────────────────── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 0;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+}
+.tag-cyan {
+  background: rgba(0,245,255,0.15);
+  color: var(--accent);
+  border: 1px solid rgba(0,245,255,0.3);
+}
+.tag-magenta {
+  background: rgba(255,0,128,0.15);
+  color: var(--accent2);
+  border: 1px solid rgba(255,0,128,0.3);
+}
+.tag-purple {
+  background: rgba(123,0,255,0.15);
+  color: #a855f7;
+  border: 1px solid rgba(123,0,255,0.3);
+}
+.tag-green {
+  background: rgba(0,255,128,0.15);
+  color: #00ff80;
+  border: 1px solid rgba(0,255,128,0.3);
+}
+
+/* ── Shimmer ─────────────────────────────────────────── */
+.shimmer {
+  background: linear-gradient(90deg, var(--surface) 25%, var(--surface2) 50%, var(--surface) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ── Flicker animation ───────────────────────────────── */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92%       { opacity: 1; }
+  93%       { opacity: 0.8; }
+  94%       { opacity: 1; }
+  96%       { opacity: 0.6; }
+  97%       { opacity: 1; }
+}
+.flicker { animation: flicker 4s infinite; }
+
+/* ── Pulse neon ──────────────────────────────────────── */
+@keyframes neon-pulse {
+  0%, 100% { box-shadow: 0 0 5px var(--accent), 0 0 20px rgba(0,245,255,0.3); }
+  50%       { box-shadow: 0 0 20px var(--accent), 0 0 60px rgba(0,245,255,0.5); }
+}
+.neon-pulse { animation: neon-pulse 2s ease-in-out infinite; }
+
+/* ── Tailwind aliases (ps- prefix kept for compatibility) */
+.bg-ps-bg      { background-color: var(--bg); }
+.bg-ps-surface { background-color: var(--surface); }
+.border-ps-border { border-color: var(--border); }
+.text-ps-text  { color: var(--text); }
+.text-ps-muted { color: var(--muted); }
+.text-ps-accent  { color: var(--accent); }
+.text-ps-accent2 { color: var(--accent2); }
+.text-ps-neon    { color: var(--neon); }
