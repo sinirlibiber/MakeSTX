@@ -3,12 +3,8 @@ name = "makestx"
 description = "MakeSTX Cyberpunk NFT — 10,000 Supply, Free Mint on Stacks"
 authors = []
 telemetry = false
-cache_location = "./.cache"
 
 [contracts.makestx-nft]
 path = "contracts/makestx-nft.clar"
 clarity_version = 2
-epoch = "2.4"
-
-[repl.settings]
-analysis = []
+epoch = "2.5"

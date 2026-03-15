@@ -36,7 +36,7 @@
   (ok (var-get last-token-id)))
 
 (define-read-only (get-token-uri (token-id uint))
-  (ok (some (concat (var-get base-uri) (uint-to-ascii token-id)))))
+  (ok (some (var-get base-uri))))
 
 (define-read-only (get-owner (token-id uint))
   (ok (nft-get-owner? makestx-nft token-id)))
@@ -149,10 +149,4 @@
     (var-set royalty-percent pct)
     (ok true)))
 
-;; ── uint-to-ascii helper ───────────────────────────────────
-(define-private (uint-to-ascii (value uint))
-  (if (<= value u9)
-    (unwrap-panic (element-at "0123456789" value))
-    (concat
-      (uint-to-ascii (/ value u10))
-      (unwrap-panic (element-at "0123456789" (mod value u10))))))
+
